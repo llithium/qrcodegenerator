@@ -9,6 +9,11 @@
   <body>
     <nav>
       <a href="/"><h1>QR Code Generator</h1></a>
+      <form action="/" method="post">
+        <input type="text" name="qrCodeURL" placeholder="" />
+        <button type="submit" name="qrCodeGen">Generate</button>
+      </form>
+      <img src="<%= locals.qrCode %>" alt="" id="qrImage" />
     </nav>
   </body>
 </html>
