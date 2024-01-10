@@ -14,21 +14,27 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
-app.post("/", async (req, res) => {
-  try {
-    const qrCodeURL = req.body.qrCodeURL;
+app.post("/generate", async (req, res) => {
+  if (req.body.qrCodeURL.length > 0) {
+    try {
+      console.log(req.body);
+      const qrCodeURL = req.body.qrCodeURL;
 
-    const response = await axios.get(apiURL + `/${qrCodeURL}/&size=200x200`);
-    const result = response.config.url;
-    console.log(response.config.url);
-    res.render("index.ejs", {
-      qrCode: result,
-    });
-  } catch (error) {
-    console.error("Failed to make request:", error.message);
-    res.render("index.ejs", {
-      error: error.message,
-    });
+      const response = await axios.get(apiURL + `/${qrCodeURL}/&size=350x350`);
+      const result = response.config.url;
+      console.log(response.config.url);
+      res.render("index.ejs", {
+        qrCode: result,
+        qrCodeContent: qrCodeURL,
+      });
+    } catch (error) {
+      console.error("Failed to make request:", error.message);
+      res.render("index.ejs", {
+        error: error.message,
+      });
+    }
+  } else {
+    res.redirect("/");
   }
 });
 

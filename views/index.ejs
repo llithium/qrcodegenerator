@@ -8,12 +8,25 @@
   </head>
   <body>
     <nav>
-      <a href="/"><h1>QR Code Generator</h1></a>
-      <form action="/" method="post">
-        <input type="text" name="qrCodeURL" placeholder="" />
-        <button type="submit" name="qrCodeGen">Generate</button>
-      </form>
-      <img src="<%= locals.qrCode %>" alt="" id="qrImage" />
+      <a href="/"><h1 id="title">QR Code Generator</h1></a>
     </nav>
+    <div id="mainContainer">
+      <p><%= locals.qrCodeContent %></p>
+      <div id="imagePlaceholder">
+        <img src="<%= locals.qrCode %>" alt="" id="qrImage" />
+      </div>
+
+      <form action="/generate" method="post">
+        <div id="formContainer">
+          <input
+            type="text"
+            name="qrCodeURL"
+            placeholder="QR Code Content"
+            value="<%= locals.qrCodeContent %>"
+          />
+          <button type="submit" name="qrCodeGen">Generate</button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
