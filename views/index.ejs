@@ -11,22 +11,33 @@
       <a href="/"><h1 id="title">QR Code Generator</h1></a>
     </nav>
     <div id="mainContainer">
-      <p><%= locals.qrCodeContent %></p>
       <div id="imagePlaceholder">
-        <img src="<%= locals.qrCode %>" alt="" id="qrImage" />
+        <a href="<%= locals.qrCode %>">
+          <img
+            src="<%= locals.qrCode %>"
+            alt=""
+            id="qrImage"
+            title="<%= locals.qrCodeContent %>"
+            onerror="this.style.display='none'"
+        /></a>
       </div>
 
       <form action="/generate" method="post">
         <div id="formContainer">
           <input
+            id="qrCodeInput"
             type="text"
             name="qrCodeURL"
             placeholder="QR Code Content"
+            maxlength="899"
             value="<%= locals.qrCodeContent %>"
           />
-          <button type="submit" name="qrCodeGen">Generate</button>
+          <button id="generateButton" type="submit" name="qrCodeGen" disabled>
+            Generate
+          </button>
         </div>
       </form>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
