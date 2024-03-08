@@ -14,14 +14,16 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
+app.get("/generate", (req, res) => {
+  res.redirect("/");
+});
+
 app.post("/generate", async (req, res) => {
   try {
-    console.log(req.body);
     const qrCodeURL = req.body.qrCodeURL;
 
     const response = await axios.get(apiURL + `/${qrCodeURL}/&size=1000x1000`);
     const result = response.config.url;
-    console.log(response.config.url);
     res.render("index.ejs", {
       qrCode: result,
       qrCodeContent: qrCodeURL,
