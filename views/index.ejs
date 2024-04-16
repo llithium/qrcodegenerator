@@ -6,13 +6,18 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0 maximum-scale=1"
     />
-    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/output.css" />
     <title>QR Code Generator</title>
     <link rel="icon" href="images/qrcode.svg" type="image/x-icon" />
   </head>
   <body>
-    <nav>
-      <a href="/"><h1 id="title">QR Code Generator</h1></a>
+    <nav class="flex">
+      <a class="flex" href="/">
+        <img src="/images/qrcode.svg" alt="" />
+        <h1 class="font-sans font-bold text-xl" id="title">
+          QR Code Generator
+        </h1>
+      </a>
     </nav>
     <div id="mainContainer">
       <div id="imagePlaceholder">
