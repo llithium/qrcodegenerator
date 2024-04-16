@@ -21,7 +21,6 @@ app.get("/generate", (req, res) => {
 app.post("/generate", async (req, res) => {
   try {
     const qrCodeURL = req.body.qrCodeURL;
-    console.log(req.body);
     const response = await axios.get(apiURL + `${qrCodeURL}&size=1000x1000`);
     const result = response.config.url;
     res.render("index.ejs", {
@@ -39,8 +38,6 @@ app.post("/generate", async (req, res) => {
 app.post("/generatewifi", async (req, res) => {
   try {
     const qrCodeURL = `WIFI:S:${req.body.wifiNetworkName};T:${req.body.encryption};P:${req.body.wifiPassowrd};;`;
-    console.log(req.body);
-    console.log(qrCodeURL);
     const response = await axios.get(apiURL + `${qrCodeURL}&size=1000x1000`);
     const result = response.config.url;
     const returning = true;
