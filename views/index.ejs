@@ -10,15 +10,47 @@
     <title>QR Code Generator</title>
     <link rel="icon" href="images/qrcode.svg" type="image/x-icon" />
   </head>
-  <body>
-    <nav class="flex border-b absolute w-full shadow-sm border-black/20 p-1">
-      <a class="flex" href="/">
-        <img src="/images/qrcode.svg" alt="" />
-        <h1 class="font-sans font-bold text-xl text-gray-900" id="title">
-          QR Code Generator
-        </h1>
-      </a>
-    </nav>
+  <body class="bg-neutral-100">
+    <a class="absolute flex w-fit m-6 items-center" href="/">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-qrcode"
+        width="50"
+        height="50"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#3b82f6"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+        />
+        <path d="M7 17l0 .01" />
+        <path
+          d="M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+        />
+        <path d="M7 7l0 .01" />
+        <path
+          d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+        />
+        <path d="M17 7l0 .01" />
+        <path d="M14 14l3 0" />
+        <path d="M20 14l0 .01" />
+        <path d="M14 14l0 3" />
+        <path d="M14 20l3 0" />
+        <path d="M17 17l3 0" />
+        <path d="M20 17l0 3" />
+      </svg>
+      <h1
+        class="flex font-sans font-bold ml-2 text-3xl h-max text-black tracking-tight"
+        id="title"
+      >
+        QR Code Generator
+      </h1>
+    </a>
     <div
       class="w-3/4 h-screen mx-auto flex flex-col flex-wrap justify-center content-center"
     >
@@ -30,7 +62,7 @@
         <button
           id="textButton"
           type="button"
-          class="inline-flex items-center justify-center px-4 py-2 basis-1/2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+          class="inline-flex items-center justify-center px-4 py-2 basis-1/2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-gray-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +91,7 @@
         <button
           id="wifiButton"
           type="button"
-          class="inline-flex items-center justify-center px-4 py-2 basis-1/2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+          class="inline-flex items-center justify-center px-4 py-2 basis-1/2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-gray-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +117,7 @@
       </div>
 
       <div
-        class="w-[350px] h-[350px] border-4 shadow-md border-gray-300 rounded-md my-2"
+        class="w-[350px] h-[350px] border-4 shadow-md bg-gray-50 border-gray-300 rounded-md my-2"
         id="imagePlaceholder"
       >
         <a href="<%= locals.qrCode %>">
@@ -103,7 +135,7 @@
         class="hidden" <% }else {}%> action="/generate" method="post">
         <div class="" id="formContainer">
           <input
-            class="block w-full h-7 p-4 mb-2 shadow-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500"
+            class="block w-full h-7 p-4 mb-2 shadow-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 focus:outline-blue-500"
             id="qrCodeInput"
             type="text"
             name="qrCodeURL"
@@ -114,7 +146,7 @@
           />
           <div class="inline-flex rounded-md shadow-sm w-full" role="group">
             <button
-              class="inline-block px-4 py-2 basis-1/2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              class="inline-block px-4 py-2 basis-1/2 text-sm font-medium text-white bg-blue-500 border border-gray-200 rounded-s-lg hover:bg-blue-600 focus:z-10 focus:ring-2 focus:ring-blue-700 disabled:bg-white disabled:text-gray-900/60"
               id="textGenerateButton"
               type="submit"
               name="qrCodeGen"
@@ -124,7 +156,7 @@
             </button>
 
             <button
-              class="inline-block px-4 py-2 basis-1/2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              class="inline-block px-4 py-2 basis-1/2 text-sm font-medium text-white bg-green-500 border border-gray-200 rounded-e-lg hover:bg-green-600 focus:z-10 focus:ring-2 focus:ring-green-700 disabled:bg-white disabled:text-gray-900/60"
               id="textDownloadButton"
               name="downloadButton"
               type="button"
@@ -140,7 +172,7 @@
         method="post">
         <div class="" id="formContainer">
           <input
-            class="block w-full h-7 p-4 mb-2 shadow-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500"
+            class="block w-full h-7 p-4 mb-2 shadow-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 focus:outline-blue-500"
             id="wifiNetworkName"
             type="text"
             name="wifiNetworkName"
@@ -150,10 +182,10 @@
             value="<%= locals.netWorkName %>"
           />
           <input
-            class="block w-full h-7 p-4 mb-2 shadow-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500"
-            id="wifiPassowrd"
+            class="block w-full h-7 p-4 mb-2 shadow-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 focus:outline-blue-500"
+            id="wifiPassword"
             type="text"
-            name="wifiPassowrd"
+            name="wifiPassword"
             placeholder="Password"
             maxlength="899"
             autofocus
@@ -206,7 +238,7 @@
           </div>
           <div class="inline-flex rounded-md shadow-sm w-full" role="group">
             <button
-              class="inline-block px-4 py-2 basis-1/2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              class="inline-block px-4 py-2 basis-1/2 text-sm font-medium text-white bg-blue-500 border border-gray-200 rounded-s-lg hover:bg-blue-600 focus:z-10 focus:ring-2 focus:ring-blue-700 disabled:bg-white disabled:text-gray-900/60"
               id="wifiGenerateButton"
               type="submit"
               name="qrCodeGen"
@@ -215,7 +247,7 @@
               Generate
             </button>
             <button
-              class="inline-block px-4 py-2 basis-1/2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+              class="inline-block px-4 py-2 basis-1/2 text-sm font-medium text-white bg-green-500 border border-gray-200 rounded-e-lg hover:bg-green-600 focus:z-10 focus:ring-2 focus:ring-green-700 disabled:bg-white disabled:text-gray-900/60"
               id="wifiDownloadButton"
               name="downloadButton"
               type="button"

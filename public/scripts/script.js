@@ -10,13 +10,21 @@ qrCodeInput.addEventListener("input", function () {
   textGenerateButton.disabled = this.value === "";
 });
 
+// Enable/Disbale Wifi generate button
 let wifiGenerateButton = document.getElementById("wifiGenerateButton");
 let wifiNetworkName = document.getElementById("wifiNetworkName");
-let wifiPassowrd = document.getElementById("wifiPassowrd");
+let wifiPassword = document.getElementById("wifiPassword");
 
-wifiNetworkName.addEventListener("input", function () {
-  wifiGenerateButton.disabled = this.value === "";
-});
+wifiNetworkName.addEventListener("input", checkInput);
+wifiPassword.addEventListener("input", checkInput);
+
+function checkInput() {
+  if (wifiNetworkName.value !== "" && wifiPassword.value !== "") {
+    wifiGenerateButton.disabled = false;
+  } else {
+    wifiGenerateButton.disabled = true;
+  }
+}
 
 let textButton = document.getElementById("textButton");
 let wifiButton = document.getElementById("wifiButton");
@@ -42,6 +50,8 @@ document
         break;
     }
   });
+
+// Download Button
 const imageURL = document.getElementById("qrImage").getAttribute("src");
 
 const textDownloadButton = document.getElementById("textDownloadButton");
