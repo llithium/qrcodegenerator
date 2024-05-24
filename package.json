@@ -1,12 +1,12 @@
 {
-  "name": "qr-code-generator",
+  "name": "qrcodegenerator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"nodemon index.js\" \"npx tailwindcss -i ./public/styles/input.css -o ./public/styles/output.css --watch\""
+    "dev": "concurrently \"nodemon index.js\" \"npx tailwindcss -i ./input.css -o ./public/styles/output.css --minify --watch\""
   },
   "keywords": [],
   "author": "",
