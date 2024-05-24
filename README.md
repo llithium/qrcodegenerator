@@ -2,7 +2,8 @@
 
 Simple QR Code Generator using goqr API for generating QR codes.
 
-**Link:** https://qr-code-generator.adaptable.app
+**Link:** https://qrcodegenerator.adaptable.app
+
 ## Built With
 
 - [Node.js](https://nodejs.org/)
