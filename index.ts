@@ -20,17 +20,17 @@ app.get("/generate", (req, res) => {
 
 app.post("/generate", async (req, res) => {
   try {
-    const qrCodeURL = req.body.qrCodeURL;
+    const qrCodeURL: string = req.body.qrCodeURL;
     const response = await axios.get(apiURL + `${qrCodeURL}&size=1000x1000`);
     const result = response.config.url;
     res.render("index.ejs", {
       qrCode: result,
       qrCodeContent: qrCodeURL,
     });
-  } catch (error) {
-    console.error("Failed to make request:", error.message);
+  } catch (error: unknown) {
+    console.error("Failed to make request:", (error as Error).message);
     res.render("index.ejs", {
-      error: error.message,
+      error: (error as Error).message,
     });
   }
 });
@@ -47,10 +47,10 @@ app.post("/generatewifi", async (req, res) => {
       password: req.body.wifiPassowrd,
       returning: returning,
     });
-  } catch (error) {
-    console.error("Failed to make request:", error.message);
+  } catch (error: unknown) {
+    console.error("Failed to make request:", (error as Error).message);
     res.render("index.ejs", {
-      error: error.message,
+      error: (error as Error).message,
     });
   }
 });
